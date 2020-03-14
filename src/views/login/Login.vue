@@ -67,7 +67,6 @@ export default {
           if(!valid) return;
           getLoginData(this.loginFrom).then(res => {
             const data = res.data.data;
-            console.log(data)
             if(res.data.meta.status != 200) return this.$message.error('登录失败！')
             this.$message.success('登录成功')
             // 1.将登陆成功之后的token,保存到客户端的sessionStore中
@@ -130,9 +129,5 @@ export default {
 .btns {
   display: flex;
   justify-content: flex-end;
-}
-
-.login_form {
-
 }
 </style>

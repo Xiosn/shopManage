@@ -1,23 +1,53 @@
 <template>
-  <div>
-    <el-button type="info" @click="logout">退出</el-button>
-  </div>
+  <el-container class="home-container" direction="vertical">
+    <header-layout/>
+
+    <el-container>
+      <aside-menu-layout :menulist="menulist"/>
+      <el-main><router-view/></el-main>
+    </el-container>
+
+  </el-container>
 </template>
 
 <script>
+import HeaderLayout from 'views/home/childComps/HeaderLayout'
+import AsideMenuLayout from 'views/home/childComps/AsideMenuLayout'
+
+import { getMenuList } from 'network/asideMenu'
+
 export default {
-  name: 'Home',
+  name: "Home",
+  components: {
+    HeaderLayout,
+    AsideMenuLayout
+  },
+  data() {
+    return {
+      menulist: []
+    }
+  },
+  created() {
+    this._getMenuList()
+  },
   methods: {
-    logout() {
-      //清空token
-      window.sessionStorage.clear();
-      //重定向到登录页
-      this.$router.push("/login");
-      this.$message("您已退出登录");
+    _getMenuList() {
+      getMenuList().then(res => {
+        if(res.data.meta.status !== 200) return this.$message.error(res.data.meta.msg)
+        this.menulist = res.data.data;
+        // console.log(this.menulist)
+    })
     }
   }
-};
+}
 </script>
 
 <style lang='less' scoped>
+.home-container {
+  height: 100vh;
+}
+
+.el-main {
+  background-color: var(--main-tint);
+}
 </style>
