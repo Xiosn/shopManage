@@ -41,7 +41,7 @@ export function usersRequest(data) {
     return request.get("/roles");
   }
   
-  // 确定分配而用户角色
+  // 确定分配用户角色
   export function setRoleRequest(userId, rid) {
     return request.put(`/users/${userId}/role`, { rid: rid });
   }

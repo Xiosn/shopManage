@@ -152,8 +152,8 @@
             :key="item.id"
             :label="item.roleName"
             :value="item.id"
-            v-for="item in rolesList"
-          />
+            v-for="item in rolesList">
+          </el-option>
         </el-select>
       </p>
       <span class="dialog-footer" slot="footer">
@@ -376,7 +376,7 @@ export default {
       const { data: res } = await getRolesListRequest();
       // console.log(res);
       if (!res) return this.$message.error("获取分配角色列表失败");
-      this.rolesList = res;
+      this.rolesList = res.data;
       this.rolesDialog = true;
     },
     // 确定分配角色
@@ -384,8 +384,8 @@ export default {
       if (!this.roleId) return this.$message.error("请选择要分配的用户角色");
       const res = await setRoleRequest(this.userInfo.id, this.roleId);
       // console.log(res);
-      if (res.meta.status === 400) return this.$alertError(res.meta.msg);
-      this.$message.success("分配用户角色成功")
+      if (res.data.meta.status != 200) return this.$message.error('更新角色失败！');
+      this.$message.success("更新用户角色成功")
         this.getUserList();
         this.rolesDialog = false;
     }
