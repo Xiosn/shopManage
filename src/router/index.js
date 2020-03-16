@@ -9,7 +9,9 @@ const Rights = () => import('views/home/childComps/power/Rights')
 const Roles = () => import('views/home/childComps/power/Roles')
 const Categories = () => import('views/home/childComps/goods/Categories')
 const Params = () => import('views/home/childComps/goods/params')
-
+const GoodsList = () => import('views/home/childComps/goods/GoodsList')
+const Add = () => import('views/home/childComps/goods/Add')
+const Edit = () => import('views/home/childComps/goods/Edit')
 
 Vue.use(VueRouter)
 
@@ -50,6 +52,18 @@ const routes = [
       {
         path: '/params',
         component: Params
+      },
+      {
+        path: '/goods',
+        component: GoodsList
+      },
+      {
+        path: '/goods/add',
+        component: Add
+      },
+      {
+        path: '/goods/edit/:id',
+        component: Edit
       }
     ]
   }

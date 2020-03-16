@@ -265,7 +265,7 @@ export default {
       // 只有选中三级分类才发起数据请求
       if (this.selectedKeys.length === 3) {
         const res = await getPanelRequest(this.catId, this.activeName);
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.meta.status != 200) return this.$message.error("获取数据失败");
         // 将数据按照空格拆分成数组
         res.data.data.forEach(item => {
