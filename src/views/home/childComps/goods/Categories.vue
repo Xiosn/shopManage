@@ -93,7 +93,6 @@
 
 <script>
 import MyBread from 'components/content/MyBread';
-
 import {
   getGoodsRequest,
   getCateRequest,
@@ -102,7 +101,6 @@ import {
   editCateRequest,
   deleteCateRequest
 } from "network/goods";
-
 export default {
   name: "Categories",
   components: { MyBread },
@@ -264,7 +262,6 @@ export default {
    font-size: 20px;
    color: #90ee90;
  }
-
  ::v-deep .el-cascader {
    width: 100%;
  } 
