@@ -10,8 +10,12 @@ import "./utils/alert";
 import 'assets/fonts/iconfont.css'
 // 导入全局样式表
 import './assets/css/base.css'
+
 // 全局引入富文本编辑器
 import "./utils/editor";
+
+import store from './store'
+import './plugins/wyz-echarts/wyz-echarts.js'
 
 Vue.config.productionTip = false
 // 全局时间过滤器
@@ -31,5 +35,6 @@ Vue.filter("dateFormat", val => {
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
