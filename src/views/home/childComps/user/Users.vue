@@ -92,7 +92,7 @@
         :model="addForm"
         :rules="addFormRules"
         label-position="left"
-        label-width="64px"
+        label-width="65px"
         ref="addFormRef"
       >
         <el-form-item label="用户名" prop="username">
